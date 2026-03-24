@@ -48,14 +48,7 @@ endif()
 
 
 add_library(apatheia_core STATIC
-  # src/core/world.cpp
-  # src/core/sim_loop.cpp
-  # src/core/constraint_solver.cpp
-  # src/core/grad_engine.cpp
-  # src/gpu/body.cu
-  # src/gpu/collision.cu
-  # src/gpu/contact.cu
-  # src/gpu/grad.cu
+  src/core/main.cpp
 )
 
 target_include_directories(apatheia_core
@@ -166,7 +159,7 @@ if(APATHEIA_BUILD_PYTHON)
   FetchContent_Declare(
     pybind11
     GIT_REPOSITORY https://github.com/pybind/pybind11.git
-    GIT_TAG        v2.12.0
+    GIT_TAG        v2.13.6
   )
   FetchContent_MakeAvailable(pybind11)
 
