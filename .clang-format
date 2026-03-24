@@ -1,0 +1,28 @@
+---
+BasedOnStyle: Google
+IndentWidth: 4
+ColumnLimit: 100
+AccessModifierOffset: -4
+
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveDeclarations: false
+AlignTrailingComments: true
+PointerAlignment: Left
+
+BreakBeforeBraces: Attach
+Cpp11BracedListStyle: true
+
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<cuda'
+    Priority: 1
+  - Regex: '^<'
+    Priority: 2
+  - Regex: '^"'
+    Priority: 3
+
+
+SpaceAfterTemplateKeyword: false
+SpacesInAngles: false
+Standard: c++17
