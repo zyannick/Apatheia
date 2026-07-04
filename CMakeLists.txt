@@ -7,7 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CUDA_STANDARD 17)
 set(CMAKE_CUDA_STANDARD_REQUIRED ON)
 
-set(CMAKE_CUDA_ARCHITECTURES 75 86 89 90)
+if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
+  set(CMAKE_CUDA_ARCHITECTURES 75 86 89 90)
+endif()
 
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -90,11 +92,13 @@ if(APATHEIA_BUILD_TESTS)
 
   enable_testing()
 
+  file(GLOB APATHEIA_TEST_SOURCES CONFIGURE_DEPENDS
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cu
+  )
+
   add_executable(apatheia_tests
-    tests/test_math.cpp
-    tests/test_quaternion.cpp
-    tests/test_sim_loop.cpp
-    tests/test_grad.cu
+    ${APATHEIA_TEST_SOURCES}
   )
 
   target_link_libraries(apatheia_tests
